@@ -1,13 +1,13 @@
-# Ai-Assistant-resume
-# ✨ AI Text Assistant
+# 📄 ATS Resume Analyzer
 
-A simple web app built with **Python**, **Streamlit**, and **Google Gemini Flash**.
-Paste text and choose a task: summarize, explain simply, improve writing, or make quiz questions.
+Upload a resume (PDF or DOCX), optionally paste a job description, and get an ATS score,
+a breakdown by category, missing keywords, and specific improvements.
+Built with **Python**, **Streamlit**, and **Google Gemini Flash** (`gemini-3.8-flash`).
 
 ## Run locally (Windows + VS Code)
 
 1. Install Python 3.10+ (tick "Add Python to PATH") and open this folder in VS Code.
-2. Open the terminal in VS Code (`Ctrl + ~`) and run:
+2. In the VS Code terminal (`Ctrl + ~`):
 
    ```powershell
    python -m venv .venv
@@ -16,7 +16,7 @@ Paste text and choose a task: summarize, explain simply, improve writing, or mak
    ```
 
 3. Get a free API key at https://aistudio.google.com/apikey
-4. Create a file named `.streamlit\secrets.toml` containing:
+4. Create `.streamlit\secrets.toml` containing:
 
    ```toml
    GEMINI_API_KEY = "paste-your-key-here"
@@ -30,14 +30,16 @@ Paste text and choose a task: summarize, explain simply, improve writing, or mak
 
 ## Deploy on Streamlit Community Cloud
 
-1. Push this project to a GitHub repository (the secrets file is ignored by `.gitignore`).
+1. Push this project to a public GitHub repository (the secrets file is ignored by `.gitignore`).
 2. Go to https://share.streamlit.io and click **Create app**.
-3. Choose your repository, branch `main`, and main file `app.py`.
-4. Open **Advanced settings → Secrets** and paste: `GEMINI_API_KEY = "your-key"`.
+3. Select your repo, branch `main`, main file `app.py`.
+4. In **Advanced settings → Secrets**, paste: `GEMINI_API_KEY = "your-key"`.
 5. Click **Deploy**.
 
 ## Troubleshooting
 
-- **"No API key found"**: check the secrets file name and location, then restart the app.
-- **Model not found**: change `MODEL_NAME` at the top of `app.py`.
+- **404 "model is no longer available"**: change `MODEL_NAME` at the top of `app.py` to the
+  current Flash model listed at https://ai.google.dev/gemini-api/docs/models, then push again.
+- **"No API key found"**: check the file is `.streamlit/secrets.toml` and restart the app.
+- **"Could not read enough text"**: your PDF is probably a scanned image; export a text-based PDF.
 - **Rate limit error**: the free tier has limits; wait a minute and retry.
