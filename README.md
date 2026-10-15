@@ -1,1 +1,0 @@
-# Ai-Assistant-resume
